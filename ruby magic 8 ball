@@ -1,0 +1,57 @@
+#----------------------------------------------
+#
+# Script Name Crazy8ball.rb
+# Version 1.0
+# Author Samuel Humpherys
+# date September 2013
+# Description: crazy 8 ball 
+#
+#------------------------------------------------
+
+class Screen # represents console screen
+	def cls # defines a way to clear the Screen
+		puts ("\n" * 25) #creates 25 new lines
+		puts "\a" # makes a beep informing the user that the screen has been cleared
+	end
+	def pause # defines a way to pause the screen
+		STDIN.gets #pauses gameplay until user presses enter
+	end
+end
+class Ball
+ attr_accessor :randomNo, :greeting, :question, :goodbye
+  def get_fortune
+  	randomNo = 1 + rand(6) #generates random number
+  	case randomNo #assigns answer based on randomly generated number
+  	when 1 
+  		$prediction = "yes"
+  	when 2
+  		$prediction = "no"
+  	when 3
+  		$prediction =  "maybe"
+  	when 4 
+  		$prediction = "hard to tell. Try agian"
+  	when 5 
+  		$prediction = "unlikely"
+  	when 6 
+  		$prediction = "unknown"
+  end
+ end 
+ def say_greeting # defines the greeting
+ 	greeting = "\t\t Welcome to the Virtual Crazy 8 Ball game!" + "\n\n\n\n\n\n\n\n\n\n\n\n Press Enter to " + "continue. \n\n"
+    print greeting
+   end
+  end
+ def get_question # defines a way for the magic 8 ball to ask the question
+ 	question = "Type your question and press the Enter key. \n\n"
+ 	print question
+   end
+ end
+ def tell_fortune(randomAnswer)
+ 	print "the answer is" + randomAnswer + ". \n\n "
+  end
+ end
+ def say_goodbyes
+ 	goodbye = "Thanks for playing my game \n\n! "
+ 	puts goodbye 
+   end
+end
