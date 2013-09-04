@@ -8,6 +8,7 @@
 #
 #------------------------------------------------
 
+# Classes and methods--------------------------------------------------------------------
 class Screen # represents console screen
 	def cls # defines a way to clear the Screen
 		puts ("\n" * 25) #creates 25 new lines
@@ -45,13 +46,48 @@ class Ball
  	question = "Type your question and press the Enter key. \n\n"
  	print question
    end
- end
+  end
  def tell_fortune(randomAnswer)
  	print "the answer is" + randomAnswer + ". \n\n "
   end
  end
- def say_goodbyes
+ def say_goodbye
  	goodbye = "Thanks for playing my game \n\n! "
  	puts goodbye 
    end
+end
+#Main Script ----------------------------------------------------------
+Console_Screen = Screen.new #creates new screen object
+Eight_Ball = Ball.new # creates new magic 8ball
+Console_Screen.cls #clears screen
+Eight_Ball.say_greeting# says the greeting 	
+Console_Screen.pause #pauses the game 
+answer = "" # creates variable that is used to control games first loop
+until answer == "y" || answer == "n"
+	Console_Screen.cls
+	answer = STDIN.gets # gathers user input
+	answer.chop!
+end
+if answer == "n" #if player has elected not to play the game
+ Console_Screen.cls
+ puts "Okay, perhaps another time. \n\n"
+else#player has decided to play
+ gameOver = "No"
+ until gameOver = "Yes"
+ 	Console_Screen.cls
+ 	Eight_Ball.get_question
+ 	Eight_Ball.get_fortune
+ 	Console_Screen.pause
+ 	Console_Screen.cls
+ 	Eight_Ball.tell_fortune
+ 	Console_Screen.pause
+ 	Console_Screen.cls
+    answer = STDIN.gets
+    answer.chop!
+    if answer == "q"
+    	gameOver = "Yes"
+    end
+end
+Console_Screen.cls
+Eight_Ball.say_goodbye
 end
