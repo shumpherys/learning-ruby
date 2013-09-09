@@ -70,3 +70,29 @@ class Game
 		puts "\n\t\t\t By: Samuel Humpherys."
 	end
 end
+#-----------Main Script Logic---------------------------------------------------
+$noRight = 0 
+Console_Screen = Screen.new
+SQ = Game.new
+SQ.greeting
+answer = ""
+loop do
+	Console_Screen.cls
+	print "Are you ready to play the Ruby Random Number Guessing Game? (y/n):"
+	answer = STDIN.gets
+	answer.chop!
+	break if answer == "y" || answer == "n"
+end
+if answer == "n"
+	Console_Screen.cls
+	puts "Maybe later then :-(\n\n"
+else
+	 SQ.instructions
+ loop do
+ 	SQ.play_game
+ 	Console_Screen.cls
+ 	print "Would you like to play again? (y/n)"
+ 	playAgain = STDIN.gets
+ 	playAgain.chop!
+ 	break if playAgain == "n"
+end
